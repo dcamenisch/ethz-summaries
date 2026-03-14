@@ -1,6 +1,6 @@
 # Summaries
 
-[![Build and Deploy to GitHub Pages](https://github.com/dcamenisch/summaries/actions/workflows/node.js.yml/badge.svg)](https://github.com/dcamenisch/summaries/actions/workflows/node.js.yml)
+[![Build and Deploy to GitHub Pages](https://github.com/dcamenisch/ethz-summaries/actions/workflows/node.js.yml/badge.svg)](https://github.com/dcamenisch/ethz-summaries/actions/workflows/node.js.yml)
 
 My study summaries and cheat sheets from ETH Zurich, plus the website that displays them. Part of the [Polyring](https://polyring.ch) webring.
 

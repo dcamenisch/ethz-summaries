@@ -24,6 +24,6 @@ module.exports = function(eleventyConfig) {
             input: "src",
             output: "public"
         },
-        pathPrefix: "/summaries/",
+        pathPrefix: "/ethz-summaries/",
     };
 };
