@@ -15,6 +15,10 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPlugin(syntaxHighlight);
 
+    eleventyConfig.addFilter("bySemester", (docs, sem) =>
+        docs.filter(d => d.semester === sem)
+    );
+
     return {
         dir: {
             input: "src",

@@ -31,23 +31,23 @@ layout: base.njk
 </ul>
 {% endmacro %}
 
-{% set sem1 = documents | selectattr("semester", "equalto", 1) | list %}
+{% set sem1 = documents | bySemester(1) %}
 {% if sem1.length %}<h2>1. Semester</h2>{{ renderDocs(sem1) }}{% endif %}
 
-{% set sem2 = documents | selectattr("semester", "equalto", 2) | list %}
+{% set sem2 = documents | bySemester(2) %}
 {% if sem2.length %}<h2>2. Semester</h2>{{ renderDocs(sem2) }}{% endif %}
 
-{% set sem3 = documents | selectattr("semester", "equalto", 3) | list %}
+{% set sem3 = documents | bySemester(3) %}
 {% if sem3.length %}<h2>3. Semester</h2>{{ renderDocs(sem3) }}{% endif %}
 
-{% set sem4 = documents | selectattr("semester", "equalto", 4) | list %}
+{% set sem4 = documents | bySemester(4) %}
 {% if sem4.length %}<h2>4. Semester</h2>{{ renderDocs(sem4) }}{% endif %}
 
-{% set sem5 = documents | selectattr("semester", "equalto", 5) | list %}
+{% set sem5 = documents | bySemester(5) %}
 {% if sem5.length %}<h2>5. Semester</h2>{{ renderDocs(sem5) }}{% endif %}
 
-{% set sem6 = documents | selectattr("semester", "equalto", 6) | list %}
+{% set sem6 = documents | bySemester(6) %}
 {% if sem6.length %}<h2>6. Semester</h2>{{ renderDocs(sem6) }}{% endif %}
 
-{% set sem0 = documents | selectattr("semester", "equalto", 0) | list %}
-{% if sem0.length %}<h2>GESS / Ergänzung / Wahl</h2>{{ renderDocs(sem0) }}{% endif %}
+{% set sem0 = documents | bySemester(0) %}
+{% if sem0.length %}<h2>Other</h2>{{ renderDocs(sem0) }}{% endif %}
