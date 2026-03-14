@@ -1,0 +1,379 @@
+\section{Integralrechnung}
+
+
+\Title{Das Riemann Integral}
+
+\begin{tcolorbox}
+    Eine \textbf{Partition} $P$ von $I$ ist eine \textbf{endliche Teilmenge} $P \subsetneq [a,b]$
+    wobei $\{a,b\} \subseteq P$. \\
+
+    Mit $\delta_i$ bezeichnen wir die Länge des Teilintervalls $[x_{i-1}, x_i]$.
+\end{tcolorbox}
+
+Mithilfe der Partition können wir nun die Untersumme / Obersumme einer Funktion definieren:
+$$s(f,P) = \Sum_{i = 1}^n f_i \delta_i, \quad f_i = \inf_{x_{i-1} \leq x \leq x_i}f(x)$$
+$$S(f,P) = \Sum_{i = 1}^n F_i \delta_i, \quad F_i = \sup_{x_{i-1} \leq x \leq x_i}f(x)$$
+
+Für Verfeinerungen $P'$ gilt: $s(f,P) \leq s(f,P') \leq S(f,P') \leq S(f,P)$. \medskip
+
+Sei nun $\mathcal{P}(I)$ die Menge der Partitionen von $I$, so definieren wir:
+$$s(f) = \sup_{P \in \mathcal{P}(I)} s(f,P) \; \text{ und } \; S(f) = \inf_{P \in \mathcal{P}(I)} S(f,P)$$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\begin{tcolorbox}
+    \Satz Eine beschränkte Funktion ist \textbf{Riemann integrierbar}, falls $s(f) = S(f)$. In diesem Fall
+    bezeichnen wir den gemeinsamen Wert als:
+    $$s(f) = \int_a^b f(x)dx = S(f)$$
+    \textbf{Alternativ:} eine beschränkte Funktion ist genau dann integrierbar, falls
+    $$\forall \epsilon > 0, \exists P \in \mathcal{P}(I) : S(f,P) - s(f,P) < \epsilon$$
+\end{tcolorbox}
+
+
+\Title{Integrierbarkeit schnell zeigen}
+
+Seien $f,g : [a,b] \to \R$ beschränkte, integrierbare Funktionen und $\lambda \in \R$:
+
+\begin{enumerate}[label = (\arabic*)]
+    \item $f$ ist stetig $\implies$ $f$ ist integrierbar
+    \item $f$ ist monoton $\implies$ $f$ ist integrierbar
+    \item Seien $f,g$ beschränkte, integrierbare Funktionen und $\lambda \in \R$. Dann sind $f+g$,
+    $\lambda \cdot f$, $f \cdot g$, $|f|$, $\max(f,g)$, $\min(f,g)$ und $\frac{f}{g}$ (falls $|g(x)|
+     \geq \beta > 0$) integrierbar
+    \item Jedes Polynom auf $[a,b]$ ist integrierbar, auch $\frac{P(x)}{Q(x)}$ falls $Q(x)$ keine
+    Nullstellen besitzt
+    \item Sind $f, g$ in einer endlichen Menge an Punkten verschieden, sind entweder beide oder keine
+    der Beiden integrierbar
+\end{enumerate}
+
+Eine stetige Funktion ist auf einem kompakten Intervall immer integrierbar. Sei $f: [a,b] \to \R$
+stetig, dann ist $f$ integrierbar.
+
+
+\Title{Rechnen mit Integralen}
+
+Sei $I \subsetneq \R$ ein kompaktes Intervall mit Endpunkten $a,b$ sowie $f,g : I \to \R$
+beschränkt integrierbar und $\lambda_1, \lambda_2 \in \R$. Dann gilt:
+$$\int_a^b(\lambda_1f(x) + \lambda_2g(x))dx = \lambda_1 \int_a^b f(x)dx + \lambda_2 \int_a^b g(x)dx$$
+
+Sei $a,b,c \in \R$ mit $a+b, b+c, ac, bc \in I$, so gilt:
+$$\int_{a+c}^{b+c}f(x)dx = \int_a^b f(t+c)dt \; \text{ und } \; \int_{a}^{b}f(ct)dt = \frac{1}{c} \int_{ac}^{bc} f(x)dx$$
+
+
+\Title{Ungleichungen und Mittelwertsatz}
+
+Es gibt einige Ungleichungen, welche wir zum \textbf{Abschätzen} von Integralen brauchen können:
+\begin{enumerate}[label = (\arabic*)]
+    \item Sei $f(x) \leq g(x), \forall x \in [a,b]$ $\implies$ $\int_a^b f(x)dx \leq \int_a^b g(x)dx$
+    \item $| \int_a^b f(x)dx | \leq \int_a^b |f(x)|dx$
+    \item $| \int_a^b (f(x)g(x))dx | \leq \sqrt{\int_a^b f^2(x)} \cdot \sqrt{\int_a^b g^2(x)}$
+\end{enumerate}
+
+Diese Ungleichungen führen dann zum \textbf{Mittelwertsatz}:
+\begin{tcolorbox}
+    \Satz Sei $f : [a,b] \to \R$ stetig. Dann gibt es $\xi \in [a,b]$ mit:
+    $$\int_a^b f(x)dx = f(\xi)(b-a)$$
+\end{tcolorbox}
+
+Daraus folgt unteranderem: Für $f,g : [a,b] \to \R$, wobei $f$ stetig und $g$
+beschränkt integrierbar mit $g(x) \geq 0, \forall x \in [a,b]$ gilt:
+$$\exists \xi \in [a,b] \quad \quad \int_a^b (f(x)g(x))dx = f(\xi)\int_a^b g(x)dx$$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Fundamentalsatz der Analysis}
+
+Der Fundamentalsatz der Analysis (oder Differentialrechnung) besagt, dass die Ableitung die Umkehrung des Integrals ist.
+
+\begin{tcolorbox}
+    Seien $a < b$ und $f : [a,b] \to \R$ stetig. Dann ist die Funktion
+    $$F(x) = \int_a^x f(t)dt, \quad \forall a \leq x \leq b$$
+    in $[a,b]$ stetig differenzierbar und
+    $$F'(x) = f(x), \quad \forall x \in [a,b]$$
+    Wir nenne $F$ die \textbf{Stammfunktion} von $f$. Es gibt eine Stammfunktion $F$ von $f$, die bis
+    auf eine additive Konstante eindeutig bestimmt ist und es gilt $\int_a^b f(x)dx = F(b) - F(a)$.
+\end{tcolorbox}
+
+
+\Title{Partielle Integration}
+
+\begin{tcolorbox}
+    Seien $a<b$ reelle Zahlen und $f,g : [a,b] \to \R$ stetig differenzierbar. Dann gilt:
+    $$\int_a^b (f(x) \cdot g'(x))dx = f(x) \cdot g(x)\Big|_a^b - \int_a^b(f'(x)\cdot g(x))dx$$
+    bzw. für unbestimmte Integrale:
+    $$\int (f(x) \cdot g'(x))dx = f(x) \cdot g(x) - \int(f'(x)\cdot g(x))dx$$
+\end{tcolorbox}
+
+$\uparrow 1 \text{falls arc- oder log-Funktion vorkommt}, x^n, \frac{1}{1-x^2}, \frac{1}{1 + x^2}, \dots$ \\ \smallskip
+$\downarrow x^n, \arcsin(x), \arccos(x), \arctan(x), \dots$ \\ \smallskip
+"egal" $e^x, \sin(x), \cos(x), \sinh(x), \cosh(x), \dots$
+
+\Title{Substitution}
+
+Die Substitution ist die Umkehrung der Kettenregel. D.h. wir wollen Substitution vorallem verwenden,
+wenn wir innere Funktionen haben.
+
+\begin{tcolorbox}
+    Sei $a < b$, $\phi : [a,b] \to \R$ stetig differenzierbar, $I \subseteq \R$ ein Intervall mit 
+    $\phi([a,b]) \subseteq I$ und $f : I \to \R$ eine stetige Funktion. Dann gilt:
+    $$\int_a^b f(\phi(t)) \cdot \phi'(t)dt = \int_{\phi(a)}^{\phi(b)}f(x)dx$$
+    bzw. für unbestimmte Integrale:
+    $$\int f(\phi(t)) \cdot \phi'(t)dt = \int f(x)dx \Big|_{x = \phi(t)}$$
+\end{tcolorbox}
+
+\Bsp $\int \frac{x}{\sqrt{9 - x^2}}dx$ substitution mit $t = \sqrt{9 - x^2}$:
+$$\Rightarrow x = \sqrt{9 - t^2} \Rightarrow x' = \frac{-2t}{2 \sqrt{9 - t^2}} \Rightarrow dx = \frac{-t \cdot dt}{\sqrt{9 - t^2}}$$
+$\int -dt = -t \text{ rücksubstitution } \Rightarrow - \sqrt{9 - x^2}$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\begin{tcolorbox}
+    \textbf{Nützliche Substitutionen}
+    \begin{enumerate}[label = (\arabic*)]
+        \item{$e^x$, $\sinh(x)$, $\cosh(x)$, subst: $t = e^{ax}, dx = \frac{dt}{at}$ Dann $\sinh=\cosh=\frac{t^2 -1}{2t}$}
+        \item{$\log(x)$ subst: $t = \log(x)$, $x = e^t$, $dx = e^t dt$}
+        \item{für gerade $n: \; \cos^n (x)$, $\sin^n(x)$, $\tan(x)$ Sub: $t = \tan(x)$, $dy = \frac{1}{1+t^2} dt$, $\sin^2(x) = \frac{t^2}{1+t^2}$, $\cos^2 (x) = \frac{1}{1+t^2}$}
+        \item{für ungerade $n: \; \cos^n (x)$, $\sin^n(x)$, Sub: $t = \tan(x/2)$, $dy = \frac{2}{1+t^2} dt$, $\sin(x) = \frac{2t}{1+t^2}$, $\cos (x) = \frac{1 - t^2}{1+t^2}$}
+        \item{$\int_{}^{} \sqrt{1-x^2} dx$ sub: $x=\sin(x)$ oder $\cos(x)$}
+        \item{$\int_{}^{} \sqrt{1+x^2} dx$ sub: $x=\sinh(x)$}
+    \end{enumerate}
+\end{tcolorbox}
+
+
+\Title{Strategie - Berechnung von Integralen}
+
+\textbf{Bruchform:}
+\begin{enumerate}[label=(\arabic*)]
+    \item Vereinfache, so dass ein einfacher Nenner entsteht
+    \item Partialbruchzerlegung
+    \item \color{blue} $\frac{u'}{2\sqrt{u}}$ oder $\frac{u'}{u}$ erkennen $\Rightarrow \sqrt{u}$ oder $\log|u|$ \color{black} 
+\end{enumerate}
+
+\textbf{Produktform:}
+\begin{enumerate}[label=(\arabic*)]
+    \item Partielle Integration anwenden (evtl. mehrmals)
+    \item Kettenregel verwenden
+\end{enumerate}
+
+\textbf{Potenzen:} \smallskip \\
+$\int_a^b f(x)^c dx$ umformen in $\int_a^b (f(x)^c \cdot 1) dx$ oder $\int_a^b (f(x)^{c-1} \cdot f(x)) dx$ 
+um dann partielle Integration zu verwenden. \smallskip
+
+\textbf{Exponentenform:} \smallskip \\
+$e / \log$ Trick verwenden, wenn Variabel im Exponenten ist. \smallskip
+
+
+\textbf{Produkt mit $e, \sin, \cos$:} \smallskip \\
+Mehrmals partielle Integration anwenden, wobei $\sin, \cos$ immer $g'$ und $e$ immer $f$ ist. \smallskip
+
+\textbf{Summe im Integral:} \smallskip \\
+Summe aus dem Integral herausziehen (dafür muss die Reihe gleichmässig konvergieren). \smallskip
+
+
+\Title{Integration von konvergenten Reihen}
+
+Sei $f_n : [a,b] \to \R$ eine Folge von beschränkten, integrierbaren Funktionen, die gleichmässig
+gegen eine Funktion $f : [a,b] \to \R$ konvergiert. Dann ist $f$ beschränkt, integrierbar und es gilt:
+$$\Limit \int_a^b f_n(x)dx = \int_a^b \Limit f_n(x)dx = \int_a^b f(x)dx$$
+
+Weiter gilt, wenn $\sum_{n = 0}^{\infty} f_n$ auf $[a,b]$ gleichmässig konvergiert:
+$$\Sum_{n = 0}^{\infty} \int_a^b f_n(x)dx = \int_a^b \Sum_{n = 0}^{\infty} f_n(x)dx$$
+
+Sei nun $f(x) = \sum c_k x^k$ eine Potenzreihe mit positivem Konvergenzradius $\rho > 0$. Dann ist
+für jedes $0 \leq r < \rho$, $f$ auf $[-r, r]$ integrierbar und es gilt $\forall x \in [- \rho, \rho]$:
+$$\int_0^x f(t)dt = \Sum_{k = 0}^{\infty} \frac{c_k}{k + 1}x^{k + 1}$$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Euler-McLaurin Formel}
+
+Die Formel hilft Summen wie $1^l + 2^l + 3^l + ... + n^l$ abzuschätzen. Für die Formel brauchen wir
+die \textbf{Bernoulli Polynome} $B_n(x)$, sowie die Bernoulli Zahlen $B_n(0)$.
+
+Wir brauchen dafür Polynome welche durch die folgenden Eigenschaften bestimmt sind:
+\begin{enumerate}[label=(\arabic*)]
+    \item $P'_k = P_{k-1}$, $k \geq 1$
+    \item $\int_0^1 P_k(x)dx = 0$, $\forall k \geq 1$
+\end{enumerate}
+
+Für das $k$-te Bernoulli Polynom gilt: $B_k(x) = k!P_k(x)$. Wir definieren weiter $B_0 = 1$ und alle
+anderen Bernoulli Zahlen rekursiv: $B_{k-1} = \sum_{i = 0}^{k-1} \binom{k}{i} B_i = 0$. 
+
+Somit erhalten wir für das Bernoulli Polynom folgenden Definition:
+$$B_k(x) = \Sum_{i = 0}^{k} \binom{k}{i} B_i x^{k-i} \quad \text{ wobei } \quad \int_0^1 B_k(x)dx = 0$$
+Hier ein paar Bernoulli Polynome: $B_0(x) = 1$, $B_1(x) = x - \frac{1}{2}$, $B_2(x) = x^2 - x + \frac{1}{6}$,
+$B_3(x) = x^3 - \frac{3}{2}x^2 + \frac{1}{2}x$, $B_4(x) = x^4 - 2x^3 + x^2 - \frac{1}{30}$, $B_5(x) =
+x^5 - \frac{5}{2}x^4 + \frac{5}{3}x^3 - \frac{1}{6}x$. Die Bernoulli Zahl $B_i$ entspricht $B_i(0)$.
+Nun definieren wir noch:
+$$\tilde{B}_k(x) = \begin{cases}
+    B_k(x) \quad \quad \quad \forall x : 0 \leq x < 1 \\
+    B_k(x - n) \quad \quad \forall x : n \leq x < n + 1
+\end{cases}$$
+Somit kommen wir auf die Euler-McLaurin Summationsformel:
+
+\begin{tcolorbox}
+    Sei $f : [0, n] \to \R$ $k$-mal stetig differenzierbar. Dann gilt: \\
+    Für $k = 1$:        
+    $$\Sum_{i = 1}^n f(i) = \int_0^n f(x)dx + \frac{1}{2}(f(n) - f(0)) + \int_0^n \tilde{B}_1(x)f'(x)dx$$
+    Für $k > 1$: 
+    \begin{center}
+        $\Sum_{i = 1}^n f(i) = \int_0^n f(x)dx + \frac{1}{2}(f(n) - f(0)) + \Sum_{j = 2}^k \frac{(-1)^j B_j}{j!}(f^{(j-1)}(n) - f^{(j-1)}(0)) + \tilde{R}_k$
+    \end{center}
+    wobei
+    $$\tilde{R}_k = \frac{(-1)^{k-1}}{k!} \int_0^n \tilde{B}_k(x)f^{(k)}(x)dx.$$
+\end{tcolorbox}
+
+Bei den jeweils letzten Termen handelt es sich um einen Fehlerterm.
+
+$$a_n := \int_0^n \frac{\tilde{B}_1(x)}{(x+1)^2}dx \text{  ist eine Cauchy Folge}$$
+
+\Title{Stirling'sche Formel}
+
+Die Stirling'sche Formel macht eine Aussage über das Verhalten der Fakultät:
+$$n! \approx \frac{\sqrt{2 \pi n} \cdot n^n}{e^n} \; \text{ bzw. } \; \lim_{n \to \infty} \frac{n!}{\frac{\sqrt{2 \pi n} \cdot n^n}{e^n}} = 1$$
+Dies ist jedoch nicht so nützlich, da wir nicht wissen wie schnell die obige Folge gegen $1$ 
+konvergiert. Aber mit der Euler-McLaurin Formel erhalten wir eine präzise Aussage.
+
+
+\columnbreak
+%---------------------------------------------------------------------------------------------------- 
+
+
+$$n! = \frac{\sqrt{2 \pi n} \cdot n^n}{e^n} \cdot \exp \left(\frac{1}{12n} + R_3(n)\right)$$
+wobei
+$$|R_3(n)| \leq \frac{\sqrt{3}}{216} \cdot \frac{1}{n^2} \quad \forall n \geq 1$$
+
+
+
+\Title{Uneigentliche Integrale}
+
+Das Riemann Integral setzt voraus, dass $[a,b]$ ein kompaktes Intervall ist und $f$ beschränkt.
+Unter gewissen Voraussetzungen ist dies aber nicht nötig.
+
+\begin{tcolorbox}
+    Sei $f : [a, \infty[ \to \R$ beschränkt und integrierbar auf $[a,b]$ für alle $a < b$. Falls:
+    $$\lim_{b \to \infty} \int_a^b f(x)dx$$
+    existiert, wir bezeichnen den Grenzwert mit
+    $$\int_a^\infty f(x)dx$$
+    und sagen, dass $f$ auf $[a, \infty[$ integrierbar ist.
+\end{tcolorbox}
+
+Auch hier können wir das Minoranten / Majoranten Kriterium verwenden. Weiter gilt, dass wenn die
+Funktion $f : [1, \infty[ \to [0, \infty[$ monoton fallend ist. Die Reihe genau dann konvergiert,
+wenn $\int_1^\infty f(x)dx$ konvergiert. \smallskip \\
+
+Eine weiter Situation für ein uneigentliches Integral ist, falls $f : ]a,b] \to \R$ auf jedem
+Intervall $[a + \epsilon, b]$, $\epsilon > 0$ beschränkt und integrierbar ist.
+
+\begin{tcolorbox}
+    $f : ]a,b] \to \R$ ist integrierbar, falls
+    $$\lim_{\epsilon \to 0^+}\int_{a + \epsilon}^b f(x)dx$$
+    existiert. In diesem Fall wird der Grenzwert mit $\int_a^b f(x)dx$ bezeichnet.
+\end{tcolorbox}
+
+\Bsp Sei $x \in \R,\ f(t)=t^x$. Dann ist \(f\) auf \(\,]0,1[\,\) ein uneigentliches Integral.
+$$\Rightarrow x > -1 \text{ und } \Int_0^1 t^x\diff t=\frac{1}{x+1} \text{ für } x > -1$$
+Weiter ist $f$ auf $[1,\infty[,$ ein uneigentliches Integral.
+$$\Rightarrow x < -1 \text{ und } \Int_1^\infty t^x \diff t = -\frac 1{1+x} \text{ für } x<-1$$
+
+
+\Title{Gamma Funktion}
+
+Die Gamme Funktion wir dafür gebraucht um die Funktion $n \mapsto (n-1)!$ zu interpolieren. Für
+$s > 0$ definieren wir:
+$$\Gamma(s) := \int_0^\infty e^{-x}x^{s-1}dx = (s-1)!$$
+
+Die Gamme Funktion konvergiert für alle $s > 0$ und hat folgende weiter Eigenschaften:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\Gamma(1) = 1$
+    \item $\Gamma(s + 1) = s \Gamma(s)$
+    \item $\Gamma$ ist logarithmisch konvex, d.h. 
+    $$\Gamma(\lambda x + (1- \lambda)y) \leq \Gamma(x)^\lambda \Gamma(y)^{1 - \lambda}$$ 
+    für alle $x,y > 0$ und $0 \leq \lambda \leq 1$.
+\end{enumerate}
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+Die Gamme Funktion ist die einzige Funktion $]0, \infty[ \to ]0, \infty[$ die (1), (2) und (3)
+erfüllt. Zudem gilt:
+$$\Gamma(x) = \lim_{n \to + \infty} \frac{n! n^x}{x(x+1) ... (x+n)} \quad \forall x > 0$$
+
+
+\Title{Unbestimmte Integrale}
+
+Sei $f : I \to \R$ auf einem Intervall $I \subseteq \R$ definiert. Falls $f$ stetig ist, gibt es 
+eine Stammfunktion $F$ für $f$. Wir schreiben in diesem Fall:
+$$\int f(x)dx = F(x) + C$$
+Das unbestimmte Integral ist die Umkehroperation zur Ableitung. Es gelten (fast) alle bereits
+erwähnten Tricks und Eigenschaften.
+
+
+\Title{Stammfunktionen von rationalen Funktionen}
+
+Die Stammfunktion einer Funktion $R(x) = \frac{P(x)}{Q(x)}$ bestehend aus rationalen Funktionen
+lässt sich als eine Funktion von Polynomen, rationalen, exponentiallen, logarithmischen, 
+trigonometrischen und invers trigonometrischen Funktionen darstellen. 
+
+Zuerst wollen wir das grad$(P) < $ grad($Q$) gilt, falls die nicht der Fall ist führen wir 
+Polynomdivision aus. Danach bestimmen wir alle reellen und komplexen Nullstellen von $Q$ und deren 
+Vielfachheit. \textbf{Eine Nullstelle kommt so oft vor wie ihre Vielfachheit, mit allen Potenzen.}
+
+Nun gilt:
+
+$$R(x) = \Sum_{k = 1}^{N} R_k(x) + \Sum_{k = 1}^{M} Z_k(x)$$
+
+Hier ist $N$ die Anzahl reeller Nullstellen und $M$ die Anzahl der komplexen Nullstellen. Es gilt:
+$$R_k(x) = \frac{a_{k_1}}{(x - x_k)} + \frac{a_{k_2}}{(x - x_k)^2} + ... + \frac{a_{k_{n_k}}}{(x - x_k)^{n_k}}$$
+$$Q_k(x) = \frac{a_{k_1} + b_{k_1} x}{((x - \alpha_k)^2 + \beta_k^2)} + ... + \frac{a_{k_{m_k}} + b_{k_{m_k}} x}{((x - \alpha_k)^2 + \beta_k^2)^{m_k}}$$
+
+Somit können wir die Funktion mit Partialbruchzerlegung in einzelnen Brüchen darstellen, welche dann 
+leichter zu integrieren sind. Wenn wir eine reelle Nullstelle haben so gilt:
+
+$$\int \frac{1}{(x-\gamma_i)^n} = \begin{cases}
+    \ln (x - \gamma_i) \quad \text{für } n = 1 \\
+    \frac{-1}{(n-1)(x\gamma_i)^{n-1}}
+\end{cases}$$
+
+Für komplexe Nullstellen gilt:
+
+$$\frac{A + Bx}{((x - \alpha)^2 + \beta^2)^j} = \frac{B(x - \alpha)}{((x - \alpha)^2 + \beta^2)^j} + \frac{A + B \alpha}{((x - \alpha)^2 + \beta^2)^j}$$
+
+$$\int \frac{B(x - \alpha)}{((x - \alpha)^2 + \beta^2)^j} = \begin{cases}
+    \frac{B}{2}\ln ((x - \alpha)^2 + \beta^2)^j \quad \text{für } j = 1 \\
+    \frac{B}{(2(1-j))((x - \alpha)^2 + \beta^2)^{j-1}}
+\end{cases}$$
+
+Für den letzen Term brauchen wir die Substitution $(x - \alpha) = \beta t$
+
+$$\int \frac{A + B \alpha}{((x - \alpha)^2 + \beta^2)^j} = \frac{A + B \alpha}{\beta^{2j-1}} \cdot \int \frac{1}{(t^2 + 1)^j}dt$$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Bsp $$\int \frac{x^2 -x + 2}{x^3 -x^2 +x -1}$$
+Wir finden die erste Nullstelle $(x - 1)$ durch ausprobieren. Danach führen wir Polynomdivision 
+(durch $x - 1$) aus und erhalten damit die zweite Nullstelle $(x^2 + 1)$. Da $x^2 + 1$ eine komplexe 
+Nullstelle ist, nehme wir dafür $A + Bx$.
+$$\frac{A + Bx}{x^2 + 1} + \frac{C}{x-1} = \frac{x^2 - x + 2}{(x^2 + 1)(x-1)}$$
+\begin{align*}
+    &\implies x^2 -x + 2 = (A+C) \cdot x^2 + (B-A)x + (C-B)\cdot 1 \\
+    &\implies B=0, A = -1, C=1 \\
+    &\implies \int \frac{1}{x-1} + \frac{-1}{x^2 + 1} = \ln(x-1) - \arctan(x) + C
+\end{align*}

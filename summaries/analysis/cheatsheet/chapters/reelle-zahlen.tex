@@ -1,0 +1,99 @@
+\section{Reelle und komplexe Zahlen}
+
+\Title{Axiome der Reelle Zahlen} \\
+$\R$ ist ein komm., angeordneter Körper, der ordnungsvollständig ist.
+
+\begin{multicols}{2}
+\tiny
+\begin{itemize}
+\itemsep0em 
+	\item[(A)]{\textbf{Axiome der Addition} $x,y \in \R \Rightarrow x + y \in \R$}
+	\begin{itemize}
+	\itemsep0em 
+		\item[(A1)]{Assoziativität: $x + (y + z) = (x + y) + z$}
+		\item[(A2)]{Neutrales Element: $x + 0 = x$}
+		\item[(A3)]{Inverses Element: $\forall x \in \R$ $\exists y \in \R :x + y = 0$}
+		\item[(A4)]{Kommutativität: $x + y = y + x$}
+	\end{itemize}
+	\item[(M)]{\textbf{Axiome der Multiplikation}}
+	\begin{itemize}
+	\itemsep0em 
+		\item[(M1)]{Assoziativität: $x \cdot (y \cdot z) = (x \cdot y) \cdot z$}
+		\item[(M2)]{Neutrales Element: $x \cdot 1 = x$}
+		\item[(M3)]{Inverses Element: $\forall x \in \R$, $x \neq 0$ $\exists y \in \R :x \cdot y = 1$}
+		\item[(M4)]{Kommutativität: $x \cdot y = y \cdot x$}
+	\end{itemize}
+	\item[(D)]{\textbf{Axiom der Distributivität} $x \cdot (y + z) = x \cdot y + x \cdot z$}
+	\item[(O)]{\textbf{Ordnungsaxiome} (1-3 Partialorder)}
+	\begin{itemize}
+	\itemsep0em 
+		\item[(O1)]{Reflexivität: $x \leq x$ $\forall x \in \R$}
+		\item[(O2)]{Transitivität: $x \leq y$ und $y \leq z \Rightarrow x \leq z$}
+		\item[(O3)]{Antisymmetrie: $x \leq y$ und $y \leq x \Rightarrow x = y$}
+		\item[(O4)]{Total: $\forall x,y \in \R$ gilt entweder $y \leq x$ oder $x \leq y$}
+	\end{itemize}
+	\item[(K)]{\textbf{Kompatibilität}} 
+	\begin{itemize}
+	\itemsep0em 
+		\item[(K1)]{$\forall x, y, z \in \R : x \leq y \Rightarrow x + z \leq y + z$ }
+		\item[(K2)]{$\forall x \geq 0, \forall y \geq 0 : x \cdot y \geq 0$}
+	\end{itemize}	
+	\item[(V)]{\textbf{Ordnungsvollständigkeit}}
+	Seien $A, B$ Teilmengen von $\R$, so dass
+	\begin{itemize}
+	\itemsep0em 
+		\item[(i)] $A \neq \emptyset$, $B \neq \emptyset$
+		\item[(ii)] $\forall a \in A$ und $\forall b \in B$ gilt: $a \leq b$  
+	\end{itemize}
+	Dann gibt es $c \in \R$, so dass $a \leq c \leq b$.
+	\begin{center} 
+		\includegraphics[width=\columnwidth/2]{ordnungsvoll.jpg}
+	\end{center}
+\end{itemize}
+\end{multicols}
+
+\Title{Archimedisches Prinzip}
+
+Sei $x \in \R$ mit $x > 0$ und $y \in \R$. Dann gibt es $n \in \N$ mit $y \leq n \cdot x$.
+\vspace*{-3mm}
+\begin{center}
+	\includegraphics[width=\linewidth/2]{arch.png}
+\end{center}
+\vspace*{-4mm}
+\Def $|x|:= max\{x,-x\} $ \\
+$\implies \color{blue} |xy|=|x||y|, |x+y|\leq |x|+|y|, |x+y| \geq ||x|-|y||$ \medskip
+\color{black} \medskip
+
+\Title{Supremum und Infimum}
+
+\Def $A \subseteq \R$ heisst von oben [unten] beschränkt (v.o.b. [v.u.b.]), falls es $x \in \R$ gibt,
+sodass $x \geq a$ [$x \leq a$] für alle $a \in A$. $x$ heißt dann obere [untere] Schranke von $A$. $A$ 
+heisst beschränkt, falls $A$ v.o.b. und v.u.b. ist.
+
+Falls $A$ eine obere Schranke mit $x \in A$ hat, ist $x$ das \textbf{Maximum} von $A$, 
+$x = \Max(A)$. [Minimum analog]
+
+\begin{tcolorbox}
+	\Satz Falls $A \subseteq \R, A \neq \emptyset$ v.o.b. [v.u.b.] ist, gibt es eine kleinste obere 
+	Schranke [grösste untere Schranke] $x$ von $A$. $x$ heißt dann \textbf{Supremum [Infimum]}  
+	von $A$, $x = \Sup(A)$ [$x = \Inf(A)$].
+\end{tcolorbox}
+
+Wenn \textbf{$x = \Sup(A)$} so gilt: 
+\begin{enumerate}[label = (\arabic*)]
+	\item{\(x\geq a\) für alle \(a\in A\)}
+	\item{für alle \(y<x\) ist \(y\) keine obere Schranke von \(A\)\\
+			   \(\Leftrightarrow\) für alle \(y<x\) gibt es \(a\in A\) mit \(y<a\)}
+\end{enumerate}
+
+Falls $A$ ein Maximum besitzt, ist $\Max(A) = \Sup(A)$. \medskip
+
+\textbf{Eigenschaften}
+\begin{enumerate}[label = (\arabic*)]
+	\item{Wenn $A \subseteq B \subseteq \R$ und $B$ beschränkt ist, so ist $A$ beschränkt und $\Sup(A) 
+	\leq \Sup(B), \Inf(A) \geq \Inf(B)$}
+	\item{Wenn $A, B \subseteq \R, A, B \neq \emptyset$ und $a \leq b$ für alle $a \in A, b \in B$, dann 
+	ist $A$ v.o.b, $B$ v.u.b. und $\Sup(A) \leq \Inf(B)$}
+	\item[]{Notation: Für $A \neq \emptyset$ und nicht v.o.b. definieren wir $\Sup(A) = \infty$, 
+	falls nicht v.u.b. $\Inf(A) = -\infty$}
+\end{enumerate}

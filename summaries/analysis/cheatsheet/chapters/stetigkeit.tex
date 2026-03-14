@@ -1,0 +1,219 @@
+\section{Stetigkeit und Funktionen}
+
+
+\Title{Definitionen}
+
+\begin{tcolorbox}
+    \Def Sei $D \subseteq \R,$ $x_0 \in D$. Die Funktion $f : D \to \R$ ist \textbf{stetig 
+    in einem Punkt} $x_0$, falls es für jedes $\epsilon > 0$ ein $\delta > 0$ gibt, so dass 
+    für alle $x \in D$ gilt:
+    $$|x - x_0| < \delta \Rightarrow |f(x) - f(x_0)| < \epsilon$$
+
+    \textbf{Alternativ:} Falls für jede Folge $(a_n)_{n \geq 1}$ mit $\Limit
+    a_n = x_0$ folgendes gilt:
+    $$f(\Limit a_n) = f(x_0) = \Limit f(a_n)$$
+    ist die Funktion $f$ in $x_0$ stetig.
+\end{tcolorbox}
+
+\Def Die Funktion $f : D \to \R$ ist stetig, falls sie in jedem Punkt von $D$ stetig ist.
+
+\vspace{2mm}
+\Bsp Abrundungsfunktion $\left\lceil \cdot \right\rceil$  ist in jedem Punkt $x_{0} \notin \mathbb{Z}$ 
+stetig, aber in keinem Punkt $x \in \mathbb{Z}$.
+
+\begin{tcolorbox}
+    \textbf{Gleichmässige Stetigkeit}: Eine Funktion $f : D \to \R$ ist gleichmässig stetig falls:
+    \begin{center}
+        $\forall \epsilon > 0$, $\exists \delta > 0$, $\forall x,y \in D$: $|x - y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon$
+    \end{center}
+    Wobei Funktionen welche in einem kompakten Intervall stetig sind, im selben Intervall auch gleichmässig
+    stetig sind.
+\end{tcolorbox}
+
+
+\Title{Rechnen mit Stetigkeit}
+
+Sei $x_0 \in D \subseteq \R$, $\lambda \in \R$ und $f : D \to \R$, $g : D \to \R$ beide in $x_0$ stetig.
+So gilt:
+
+\begin{enumerate}[label=(\arabic*)]
+    \item $f + g$, $\lambda \cdot f$, $f \cdot g$ sind stetig in $x_0$ (auch $g \circ f$ bei anderen Def. Bereichen)
+    \item falls $g(x_0) \neq 0$, dann ist $\frac{f}{g}$ stetig in $x_0$ für $D \cap \{ x \in D : g(x) \neq 0 \}$
+    \item $|f|$, $\max(f,g)$ und $\min(f,g)$ sind stetig in $x_0$
+    \item Polynomiale Funktionen sind auf ganz $\R$ stetig
+    \item die Trigonometrischen Funktionen $\sin : \R \to \R$ und $\cos : \R \to \R$ sind stetig
+    \item die Exponentialfunktion $e^x$ ist auf ganz $\R$ stetig
+    \item seien $P, Q$ polynomiale Funktionen auf $\R$ mit $Q \neq 0$. Seien $x_1, ... , x_m$ die
+    Nullstellen von $Q$. Dann ist $\frac{P}{Q}$ stetig für $\R \backslash \{x_1, ... , x_m\}$ 
+    (komplexe Nullstellen sind immer komplementär)
+    \item sei $f : D_1 \to D_2$ und $g : D_2 \to \R$ Funktionen, sowie $x_0 \in D_1$. Falls $f$ in $x_0$
+    und $g$ in $f(x_0)$ stetig sind, so ist $g(f(x_0)) : D_1 \to \R$ in $x_0$ stetig
+\end{enumerate}
+
+
+\Title{Zwischenwertsatz}
+
+\begin{tcolorbox}
+    \Satz Sei $I \subseteq \R$ ein Intervall, $f : I \to \R$ eine stetige Funktion und $a,b \in I$.
+    Für jedes $c$ zwischen $f(a)$ und $f(b)$ gibt es ein $z$ zwischen $a$ und $b$ mit $f(z) = c$.
+\end{tcolorbox}
+
+Der Zwischenwertsatz wird oftmals verwendet um zu zeigen, dass eine Funktion einen gewissen Wert annimmt.
+Typische Anwendungsbeispiele sind:
+\begin{enumerate}[label=(\arabic*)]
+    \item Sei $f : [a,b] \to \R$ stetig. Falls $f(a) \cdot f(b) < 0$, dann $\exists c \in ]a,b[$ mit
+    $f(c) = 0$ (also eine Nullstelle).
+    \item Sei $P(x) = a_nx^n + ... + a_0$ ein Polynom mit $a_n \neq 0$ und $n$ ungerade. Dann besitzt
+    $P$ mindestens eine Nullstelle in $R$.
+\end{enumerate}
+
+
+\Title{Min-Max Satz}
+
+\Def Ein Intervall $I \subseteq \R$ ist \textbf{kompakt}, falls es von der Form \text{[a,b]}  
+ist mit $a \leq b$.
+
+\Bem Für $x_0$ in einem kompakten Intervall gibt es immer min. eine Folge $(a_n)_{n \geq 1}$, $a_n \in I$, 
+so dass $\Limit a_n = x_0$.
+
+\begin{tcolorbox}
+    \Satz Sei $f : I = [a,b] \to \R$ stetig auf einem kompakten Intervall $I$. Dann gibt es 
+    $u, v \in I$ mit
+    $$f(u) \leq f(x) \leq f(v) \quad \quad \forall x \in I.$$
+    Insbesondere ist $f$ beschränkt.
+\end{tcolorbox}
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------	
+
+
+\Title{Satz der Umkehrabbildung}
+
+\Satz Sei $I \subseteq \R$ ein Intervall und $f : I \to \R$ eine stetige, streng monotone Funktion.
+Dann ist das Bild $f(I) := J$ ein Intervall und die Umkehrfunktion $f^{-1} : J \to I$ ist stetig,
+streng monoton.
+
+\Bsp Sei $n \geq 1$. Dann ist $f : [0, \infty[ \to [0, \infty[$ als $x \to x^n$ streng monoton wachsend,
+stetig und surjektiv. Nach dem Umkehrsatz existiert nun  eine streng monoton wachsende, stetige Umkehrabbildung
+$f^{-1} : [0, \infty[ \to [0, \infty[$ als $x \to \sqrt[n]{x}$.
+
+
+\Title{Konvergenz von Funktionenfolgen}
+
+\Def Eine \textbf{Funktionenfolge} ist eine Abbildung $\N \to \R^D : n \to f_n$, wobei $f_n$ die n-te Funktion
+ist. Für jedes $x \in D$ erhält man eine Folge $(f_n(x))_{n \geq 0}$ in $\R$.
+
+\begin{tcolorbox}
+    Die Funktionenfolge  $(f_n)_{n \geq 0}$ \textbf{konvergiert punktweise} gegen eine Funktion 
+    $f : D \to \R$, falls für alle $x \in D$:
+    $$f(x) = \Limit{f_n(x)}$$
+    \textbf{Alternativ:}
+    $$\forall \epsilon > 0, \; \forall x \in D, \; \exists N \geq 1, \; \forall n \geq N, : |f_n(x) - f(x)| < \epsilon$$
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+    Die Funktionenfolge \textbf{konvergiert gleichmässig} gegen $f$ falls:
+    $$\forall \epsilon > 0, \; \exists N \geq 1, \; \forall n \geq N, \; \forall x \in D : |f_n(x) - f(x)| < \epsilon$$
+    \textbf{Alternativ:}
+    $$\forall \epsilon > 0, \; \exists N \geq 1, \; \forall n,m \geq N, \; \forall x \in D : |f_n(x) - f_m(x)| < \epsilon$$
+\end{tcolorbox}
+
+\Bem Jede gleichmässig konvergente Funktionenfolge ist auch punktweise konvergent, jedoch nicht 
+umgekehrt!
+
+\Satz Sei $D \subseteq \R$ und $f_n : D \to \R$ eine Funktionenfolge aus stetigen Funktionen.
+Wenn $f_n$ gleichmässig gegen $f$ konvergiert, dann ist auch $f$ stetig. (Für punktweise konvergenz
+muss dies nicht der Fall sein.)
+
+
+\Title{Strategie - Konvergenz von Funktionenfolgen}
+
+\begin{enumerate}[label=(\arabic*)]
+    \item Punktweiser Limes von $f_n$ auf $D$ finden.
+    \item Prüfe auf gleichmässige Konvergenz:
+        \begin{enumerate}[label=(\roman*)]
+            \item Indirekte Methode: $f$ unstetig bedeuted keine gleichmässige Konvergenz, $f$ stetig,
+            monoton wachsend und $D$ kompakt bedeuted gleichmässige Konvergenz.
+            \item Direkte Methode: Berechne $\sup_{x \in D} |f_n(x) - f(x)|$ (evtl. Ableitung von 
+            $|f_n(x) - f(x)|$ gleich Null setzen). Danach Limes für $n \to \infty$ von $\sup_{x \in D} |f_n(x) - f(x)|$
+            berechnen, falls dieser Null ist, so konvergiert $f_n$ gleichmässig.
+        \end{enumerate}
+\end{enumerate}
+
+
+\Title{Konvergenz von Funktionenreihen}
+
+\Def Die Reihe $\Reihe f_k(x)$ \textbf{konvergiert gleichmässig}, falls die durch $S_n(x) = \sum_{k=0}^{n} f_k(x)$
+definierte Funktionenfolge gleichmässig konvergiert.
+
+\begin{tcolorbox}
+    \Satz Sei $f_n$ eine Folge stetiger Funktionen und es gilt $|f_n(x)| \leq c_k, \forall x \in D$.
+    Wenn nun $\Reihe c_k$ konvergiert, so konvergiert auch die Reihe $\Reihe f_k(x)$ gleichmässig,
+    wobei der Grenzwert $f(x)$ eine stetige Funktion ist.
+\end{tcolorbox}
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Grenzwerte von Funktionen}
+
+Wir betrachten Funktionen $f : D \to \R$ und wollen den Grenzwert für den Fall $x \in D$ strebt gegen
+$x_0$ finden. Dabei kann es sein, dass $x_0 \notin D$. Wir nehmen an, dass $x_0$ ein Häufungspunkt 
+von $D$ ist.
+
+\begin{tcolorbox}
+    $x_0 \in \R$ ist ein \textbf{Häufungspunkt} der Menge $D$ falls:
+    $$\forall \delta > 0 : \quad (]x_0 - \delta, x_0 + \delta [ \backslash \{ x_0 \}) \cap D \neq \emptyset$$
+\end{tcolorbox}
+
+Nun können wir den Grenzwert von Funktionen betrachten.
+
+\begin{tcolorbox}
+    Sei $f$ eine Funktion und $x_0$ ein Häufungspunkt von $D$. Dann ist $A \in \R$ der Grenzwert
+    von $f(x)$ gegen $x_0$, falls $\forall \epsilon > 0, \exists \delta > 0$ so dass
+    $$\forall x \in D \cap (]x_0 - \delta, x_0 + \delta [ \backslash \{ x_0 \}) : |f(x) - A| < \epsilon$$
+\end{tcolorbox}
+
+\Satz Sei $(a_n)_{n \geq 1}, \, a_n \in \C$ beschränkt:
+\begin{enumerate}[label=(\arabic*)]
+    \item{Es gibt mindestens einen Häufungspunkt der Folge}
+    \item{Falls es nur einen Häufungspunkt \(a\in\C\) gibt, konvergiert \((a_n)_{n \geq 1}\) gegen \(a\).}
+\end{enumerate}
+
+\Bem Seien $f,g$ Funktionen und $x_0$ ein Häufungspunkt von $D$ so gilt:
+\begin{enumerate}[label = (\arabic*)]
+    \item $\lim_{x \to x_0} f(x) = A$, wenn für jede Folge $(a_n)_{n \geq 1}$ in $D \backslash \{ x_0 \}$
+    mit $\lim_{n \to \infty} a_n = x_0$ folgt $\lim_{n \to \infty} f(a_n) = A$
+    \item  Wenn $x_0 \in D$, dann ist $f$ stetig in $x_0$ falls $\lim_{x \to x_0} f(x) = f(x_0)$
+    \item $\lim_{x \to x_0} (f + g)(x) = \lim_{x \to x_0} f(x) + \lim_{x \to x_0} g(x)$
+    \item $\lim_{x \to x_0} (f \cdot g)(x) = \lim_{x \to x_0} f(x) \cdot \lim_{x \to x_0} g(x)$
+    \item Sei $f \leq g$, so ist $\lim_{x \to x_0} f(x) \leq \lim_{x \to x_0} g(x)$
+    \item Falls $g_1 \leq f \leq g_2$ und $\lim_{x \to x_0} g_1(x) = \lim_{x \to x_0} g_2(x)$, so
+    existiert $\lim_{x \to x_0} f(x) = \lim_{x \to x_0} g_1(x)$
+\end{enumerate}
+
+\Satz Sei $x_0$ ein Häufungspunkt von $D$, $f : D \to E$ eine Funktion mit $y_0 = \Lim_{x \to x_0} f(x)$
+mit $y_0$. Fall $g : E \to \R$ stetig ist in $y_0$ folgt:
+$$\Lim_{x \to x_0} g(f(x)) = g(y_0)$$
+
+
+\Title{Linksseitiger und Rechtsseitiger Grenzwert}
+
+Sei $f : D \to \R$ und $x_0 \in D$ ist ein Häufungspunkt von $D \; \cap \; ]x_0, + \infty[$. Falls der
+Grenzwert der eingeschränkten Funktion $f$ im Bereich $D \; \cap \; ]x_0, + \infty[$ für $x \to x_0$
+existiert, wird er mit $\lim_{x \to x_0^+} f(x)$ bezeichnet und nennt sich \textbf{rechtsseitiger
+Grenzwert} von $f$ bei $x_0$. Das Analoge gilt für den \textbf{linksseitigen Grenzwert}.
+
+Wir erweitern diese Definition auf $\lim_{x \to x_0^+} f(x) = + \infty$ falls gilt:
+$$\forall \epsilon > 0, \exists \delta > 0, \forall x \in D \cap ]x_0, x_0 + \delta[ : \; f(x) > \frac{1}{\epsilon}$$
+und analog für $\lim_{x \to x_0^+} f(x) = - \infty$:
+$$\forall \epsilon > 0, \exists \delta > 0, \forall x \in D \cap ]x_0, x_0 + \delta[ : \; f(x) < -\frac{1}{\epsilon}$$
+Für den linksseitigen Grenzwert gilt das Analoge.
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------

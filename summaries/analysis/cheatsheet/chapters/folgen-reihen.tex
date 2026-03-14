@@ -1,0 +1,405 @@
+\section{Folgen und Reihen}
+
+\Title{Definitionen}
+
+\Def Eine \textbf{Folge} (reeller Zahlen) ist eine Abbildung $a: \N^{*} \rightarrow \R $\\
+Wir schreiben $a_{n}$ statt $a(n)$ und bezeichnen eine Folge mit $(a_{n})_{n \geq 1}$\\
+\Bsp $a_{n} = \frac{1}{n}$
+
+\Def Sei $(a_{n})_{n \geq 1}$ eine Folge in $\R $ oder $\C$, so ist die \textbf{Reihe} 
+$(S_{n})_{n \geq 1}$, die Partialsumme $S_n = \sum_{k=1}^{n}a_k$.
+
+
+\Title{Wichtige Folgen}
+
+\begin{enumerate}[label=(\arabic*)]
+	\item{Arithmetische Folge: \((a_n)\), sodass \(a_{n+1}-a_n=d\) konstant ist, d.h. \(a_1=a,\;a_2=a_1+d,\quad a_n=a+(n-1)d\)}
+	\item{Geometrische Folge: \((a_n)\), sodass \(a_{n+1}=qa_n\) mit \(q\) konstant, d.h. \(a_1=a,\;a_2=qa,\quad a_n=q^{n-1}\cdot a\)}
+\end{enumerate}
+
+\Satz Es gilt \(a+qa+\dots+q^{n-1}a = a(1+q+\dots+q^{n-1}) = \begin{cases} na&\text{für }q=1\\ a\cdot\frac{1-q^n}{1-q}& \text{für }q\neq 1\end{cases}\)
+
+
+\Title{Grenzwert und Konvergenz}
+
+\begin{tcolorbox}
+	\Def Eine Folge $(a_n)_{n \geq 1}$ in $\C$ \textbf{konvergiert} für $n \rightarrow \infty$ gegen ein
+	$a \in \C$, falls es für alle $\epsilon > 0$ ein $N \in \N$ gibt, sodass für alle 
+	$n \geq \N$ gilt $|a_n-a| < \epsilon$. \\
+
+	\textbf{Äquivalent:} Eine Folge $(a_n)_{n \geq 1}$ heisst konvergent, falls es $l \in \R$ gibt,
+	so dass $\forall \epsilon > 0$ die Menge $\{n \in \N^{*}: a_{n} \notin ]l - \epsilon, l + \epsilon[\}$ endlich ist.
+	Man bezeichnet $a= \lim_{n \rightarrow \infty} a_n$, wobei $a$ der Grenzwert von $(a_n)$ ist. \\
+
+	Falls die Reihe $(S_n)_{n \in \N}$ gegen $S \in \C$ konvergiert, bezeichnet man $S=\sum_{n=1}^\infty a_n$
+\end{tcolorbox}
+
+Falls eine Folge oder Reihe nicht konvergiert, so divergiert sie. Schreiben wir $a=\lim_{n\rightarrow\infty}a_n$, 
+so meinen wir, dass der Grenzwert der Folge $(a_n)$ existiert und gleich $a$ ist.
+
+\Bsp (1) Sei $k \in \N$, $a_n = n^kq^n$, $0\leq|q|<1 \implies \lim_{n\rightarrow\infty}a_n = 0\)\\
+\hspace{8mm}(2) Sei $c \geq 1$, $a_n=\frac{c^n}{n!} \implies \lim_{n\rightarrow\infty}a_n = 0\) \\
+\hspace{8mm}(3) Sei b $\in \mathbb{Z},$ $\lim_{n \to \infty} (1 + \frac{1}{n})^{b}$ = 1
+
+
+\begin{tcolorbox}
+	\Satz Eine \textbf{konvergente Folge ist immer beschränkt} und hat \textbf{genau} einen Grenzwert.
+\end{tcolorbox}
+
+\color{blue}
+\Bem konvergent $\Rightarrow$ beschränkt, aber nicht umgekehrt!	\\
+\Bem $a_n \quad konv. \Rightarrow b_n = a_{n+1}-a_n \quad konv$
+\color{black}
+
+Um zu zeigen, dass $a$ der Grenzwert der Folge $a_n$ ist, müssen wir zeigen, dass $|a_n - a| < \epsilon$
+ab einem gewissen $n$ für alle $\epsilon$ gilt. D.h. wir formen nach $n$ um, dabei müssen wir auf das Ungleichzeichen
+und mögliche Wurzeln aufpassen.
+
+\begin{tcolorbox}
+	\Satz (Sandwich-Theorem)
+	Sei $\Limit a_n = \alpha$ und $\Limit c_n = \alpha$ und $a_n \leq b_n \leq c_n, \forall n \geq k$,
+	dann gilt $\Limit b_n = \alpha$
+\end{tcolorbox}
+
+
+\vspace*{0mm}
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Satz Falls $(b_n)_{n \geq 1}$ gegen 0 konvergiert und \(|a_n-a|\leq b_n\), dann konvergiert 
+\((a_n)_{n \geq 1}\) gegen \(a\).
+
+\Satz Seien $(a_n)_{n \geq 1},(b_n)_{n \geq 1}$ mit $a = \lim_{n \rightarrow \infty} a_n$ und 
+$b = \lim_{n \rightarrow \infty} b_n$, so gilt:
+\begin{enumerate}[label=(\arabic*)]
+    	\item{Die Folge \((a_n+b_n)_{n \geq 1}\) konvergiert gegen \(a+b\)}
+    	\item{Die Folge \((a_n\cdot b_n)_{n \geq 1}\) konvergiert gegen \(a\cdot b\)}
+    	\item{Falls $b \neq 0$ ist $b_n \neq 0$ für $n$ gross genug und 
+    	$\lim_{n \rightarrow \infty} \left( \frac{a_n}{b_n} \right) = \frac{a}{b}$.}
+    	\item{Falls $\exists K \geq 1$ sodass \(a_n\leq b_n\), $\forall n \geq K$, ist \(a\leq b\)}
+\end{enumerate}
+
+
+\Title{Der Satz von Weierstrass}
+
+\Def $(a_{n})_{n \geq 1}$ ist monoton wachsend [fallend] falls: $a_{n} \leq a_{n+1} 
+[a_{n} \geq a_{n+1}], \forall n \geq 1$.
+
+\begin{tcolorbox}
+	\Satz Sei ($a_{n})_{n \geq 1}$ monoton wachsend und nach oben beschränkt. Dann konvergiert $(a_{n})_{n \geq 1}$ mit Grenzwert
+			$\lim_{n \to \infty} a_{n} = \sup\{a_{n} : n \geq 1\} $ \\
+		
+		Sei ($a_{n})_{n \geq 1}$ monoton fallend und nach unten beschränkt. Dann konvergiert $(a_{n})_{n \geq 1}$ mit Grenzwert
+			$\lim_{n \to \infty} a_{n} = \inf\{a_{n} : n \geq 1\} $
+\end{tcolorbox}
+
+
+\Title{Bolzano Weierstrass}
+
+\Def Eine \textbf{Teilfolge} einer Folge $(a_{n})_{n \geq 1}$ 
+ist eine Folge $(b_{n})_{n \geq 1}$ mit $b_{n} = a_{l(n)}$, wobei $l: 
+N^{*} \rightarrow N^{*}$ eine Abbildung bezeichnet mit der Eigenschaft $l(n) < l(n+1)$ 
+$\forall n \geq 1$ (das jeweils nächste Element der Teilfolge kommt auch später in der eigentlichen Folge) \\ \smallskip
+\Satz Jede beschränkte Folge besitzt eine konvergente Teilfolge.
+
+
+\Title{Limes Superior und Limes Inferior}
+
+Mit jeder beschränkten Folge $(a_{n})_{n \geq 1}$ lassen sich zwei monotone Folgen $(b_{n})_{n \geq 1}$ 
+und $(c_{n})_{n \geq 1}$ definieren, welche dann einen Grenzwert besitzen. \\
+Sei für jedes n $\geq 1$: 
+$$b_{n} = \inf\{a_{k} : k \geq n\} \text{\quad und \quad} c_{n} = \sup\{a_{k}: k \geq n\}$$
+
+Dann ist $b_{n} \leq b_{n+1}$ und $c_{n+1} \leq c_{n}$ $\forall n \geq 1$. Nach 
+Weierstrass sind beide folgen Konvergent, und wir definieren:
+$$\liminf_{n \to \infty} a_{n} := \lim_{n \to \infty} b_{n} \; \text{ und } \; \limsup_{n \to \infty} a_{n} := \lim_{n \to \infty} c_{n}$$
+Ist $\liminf_{n \to \infty} a_{n} = \limsup_{n \to \infty} a_{n}$ $\Rightarrow \exists \lim_{n \to \infty} a_{n}$ 
+mit $\lim_{n \to \infty} a_{n} = \liminf_{n \to \infty} a_{n} = \limsup_{n \to \infty} a_{n}$
+
+\Def Ein \textbf{abgeschlossenes Intervall} ist von der Form $[a,b]$, $]-\infty, b]$, $[a,\infty[$
+oder $]-\infty, \infty[$. Sei $I = [a,b]$, so ist die \textbf{Länge} des Intervalls L$(I)$ = $b - a$. 
+
+\Satz (Cauchy-Cantor) \\
+Sei $I_{1} \supseteq I_{2} \supseteq I_{3} \supseteq ... I_{n} \supseteq I_{n+1} \supseteq...$ 
+eine Folge abgeschlossener Intervalle mit $L(I_{1}) < + \infty$, dann gilt 
+$\cap_{n \geq 1} I_{n} \neq \emptyset$. Ist $\lim_{n \to \infty}$ $L_{I_{n}} = 0$, so enthält 
+die Schnittmenge genau einen Punkt.
+
+
+\Title{Konvergenzkriterien}
+
+\Bem Sei $(a_n)_{n \geq 1}$ konvergent $\Leftrightarrow$ $(a_n)_{n \geq 1}$ beschränkt
+und $\liminf_{n \rightarrow \infty} a_n = \limsup_{n \rightarrow \infty} a_n$.
+
+\Satz Falls $(a_n)_{n \geq 1}$ eine monoton wachsende [fallende] Folge ist, dann konvergiert $(a_n)_{n \geq 1}$ 
+und $\lim_{n\rightarrow\infty}a_n=\Sup_{n \geq 1}(a_n)$ $[\Inf_{n \geq 1}(a_n)]$ genau dann, wenn $(a_n)_{n \geq 1}$
+beschränkt ist.
+
+Eine Folge in $\R^{d}$ verhält sich eigentlich gleich wie Folgen in $\R$. Sei 
+$a(_{n})_{n \geq 1}$(gleiche Schreibweise) eine Folge in $R^{d}$.
+Sie konvergiert falls: \\ 
+$\exists a \in \R^{d}$ mit $\forall \epsilon > 0$ $\exists N \geq 1$ mit $||a_{n} - a|| < \epsilon$ $\forall n \geq N$
+
+
+\vspace*{0mm}
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Das Cauchy-Kriterium}
+
+\begin{tcolorbox}
+	\Satz Eine Folge $(a_n)_{n \geq 1}$ ist genau dann konvergent, falls
+	$$\forall \epsilon > 0, \exists N \geq 1 \text{\quad so dass \quad} |a_n - a_m| < \epsilon \quad \forall n,m \geq N.$$
+	Solch eine Folge nennt man auch \textbf{Cauchy-Folge}.
+\end{tcolorbox}
+
+\Bem Für eine Cauchy-Folge $(a_n)_{n \geq 1}$ gilt:
+\begin{enumerate}[label=(\arabic*)]
+	\item $\Rightarrow (a_n)_{n \geq 1}$ ist beschränkt
+	\item $\Leftrightarrow (a_n)_{n \geq 1}$ ist konvergent 
+\end{enumerate}
+
+\Bem $a_n = \sum_{i=1} \frac{1}{i}$ konvergiert nicht, aber \(|a_{n+1}-a_n|\) konvergiert. 
+
+
+\Title{Strategie - Konvergenz von Folgen}
+\begin{enumerate}[label=(\arabic*)]
+	\item Für \textbf{Brüche}, grösste Potenz von $n$ ausklammern und kürzen. Alle übrigen Brüche der Form $\frac{a}{n^s}$ streichen,
+	da diese zu 0 konvergieren.
+	\item Für \textbf{Wurzeln in einer Summe}, multipliziere mit der Differenz der Summe (bei $a + b$
+	multipliziere mit $a - b$). 	
+	\item Anwendung \textbf{Sandwich-Theorem}.
+	\item Vergleich mit Referenz-Folgen.
+	\item Grenzwert durch simple Operationen und Umformen ermitteln.
+	\item Definition der Konvergenz / Limes anwenden.
+	\item Für \textbf{rekursive Folgen}, Satz von Weierstrass anwenden, obere / untere Schranke abschätzen
+	und per Induktion beweisen.
+	\item Anwendung des Cauchy-Kriteriums
+	\item Suchen eines konvergenten Majoranten.
+\end{enumerate}
+
+\Bsp $d_1 = 3, \; d_{n+1} = \sqrt{3d_n -2}, \; \forall n > 1$ \\
+Beweise per Induktion, dass die Folge monoton fallend ist. Nun brauchen wir eine untere Schranke.
+Induktionstrick für mögliche Kandidaten vom Limes. Angenommen die Folge konvergiert, so hat jede
+Teilfolge den gleichen Grenzwert. Betrachten wir die Teilfolge $l(n) = n+1$:
+$$d = \lim\limits_{n \to \infty} d_n =\lim\limits_{n \to \infty} d_{n+1} = \sqrt{\lim\limits_{n \to \infty} 3d_n -2} = \sqrt{3d -2}$$
+$d^2 = 3d -2$, nehmen wir $d = 2$. Zeige nun dass die Folge nach unten beschränkt ist, mit d = 2.
+Dies erfolgt wieder per Induktion.
+
+\Title{Strategie - Divergenz von Folgen}
+
+\begin{enumerate}[label=(\arabic*)]
+	\item Suche einen divergenten Minoranten
+	\item Für alternierende Folgen zeige, dass $\Limit a_{p_1(n)} \neq \Limit a_{p_2(n)}$.
+\end{enumerate}
+
+
+\Title{Limes Binom Trick}
+
+Gegeben die Summe von zweier (oder einer) Wurzel, kann man wie folgt vorgehen:
+$$\Lim_{x \to \infty} (\sqrt{x + 5} - \sqrt{x - 3}) = \Lim_{x \to \infty} (\frac{(x + 5) - (x - 3)}{\sqrt{x + 5} + \sqrt{x - 3}})$$
+
+
+\Title{Limes Substitution Trick}
+
+Hier ein Beispiel:
+$$\Lim_{x \to \infty} x^2(1 - \cos(\frac{1}{x}))$$
+Substituiere nun $u = \frac{1}{x}$:
+$$\Lim_{u \to 0} \frac{1 - \cos(u)}{u^2} = \Lim_{u \to 0} \frac{\sin(u)}{2u} = \Lim_{u \to 0} \frac{\cos(u)}{2} = \frac{1}{2}$$
+
+
+\vspace*{0mm}
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Limes Log Trick}
+
+Limes der Form $\infty^0$ und $1^\infty$ können meist mit dem Log-Trick berechnet werden:
+$f(x)^{g(x)} = e^{g(x) \cdot \ln(f(x))}$, dann Bernoulli ($e$ ist stetig, daher betrachten wir nur den
+ Exponenten) anwenden oder vereinfachen.
+
+$\lim u(x)^{v(x)} = \lim e^{v(x)\cdot ln(u(x))} = e^{\lim [v(x)\cdot ln(u(x))]} = \begin{cases}
+	u^v\\
+	+\infty\\
+	-\infty
+\end{cases}$
+
+
+\Title{Rechnen mit Reihen}
+
+\begin{tcolorbox}
+	\Satz Seien $\sum_{k=1}^{\infty} a_{k}$ und $\sum_{j=1}^{\infty} b_{j}$ konvergent, sowie $\alpha \in C$
+	\begin{enumerate}[label=(\arabic*)]
+		\item Dann ist $\sum_{k=1}^{\infty} (a_{k} + b_{k})$ = $(\sum_{k=1}^{\infty} a_{k}) + (\sum_{j=1}^{\infty} b_{j})$ und konvergiert.
+		\item Dann ist $\sum_{k=1}^{\infty} (\alpha \cdot a_{k}) = \alpha \cdot \sum_{k=1}^{\infty} a_{k}$ und konvergiert.
+	\end{enumerate}
+\end{tcolorbox}
+
+
+\Title{Cauchy-Kriterium für Reihen}
+
+\Satz Die Reihe $\Reihe a_k$ konvergiert genau dann, falls
+\vspace*{-6pt}
+$$\forall \epsilon > 0, \exists N \geq 1 \text{\quad mit \quad} |\sum_{k = n}^{m}a_k| < \epsilon \quad \forall m \geq n \geq N$$
+
+\begin{tcolorbox}
+	\textbf{(Nullfolgenkriterium)} Aus dem Cauchy-Kriterium folgt, dass eine Reihe $\Reihe a_n $ divergiert, 
+	falls $\Limit a_n \neq 0$.
+\end{tcolorbox}
+
+
+\Kor Sei $a_n \geq 0,\; s_n = a_1 + \dots + a_n$. So gilt:
+\vspace{-6pt}
+\begin{center}
+	$\sum_{n=1}^\infty a_n \text{ konvergiert } \Longleftrightarrow (s_n) \text{ ist v.o.b. }$
+\end{center}
+\vspace{-6pt}
+Insbesondere: Falls \(0\leq b_n\leq a_n\), so konvergiert auch $\sum_{n=1}^\infty b_n$.
+Falls \(a_n\geq0\) und \(\sum_{n=1}^\infty a_n\) divergent ist, sagen wir \(\sum_{n=1}^\infty a_n=\infty\).
+
+\Satz Sei $\sum_{k=1}^{\infty} a_{k}$ eine Reihe mit $a_{k} \geq 0,$ $\forall k \in \N^{*}$. Die Reihe $\sum_{k=1}^{\infty} a_{k}$ konvergiert genau dann, falls die Folge $(S_{n})_{n\geq 1}$, $S_{n} = \sum_{k=1}^{n} a_{k}$
+der Partialsummen nach oben beschränkt ist.
+
+
+\Title{Absolute Konvergenz}
+
+\begin{tcolorbox}
+	\Def Eine Reihe $\Reihe a_k, \; a_n \in \C$ heisst \textbf{absolut konvergent}, falls
+	$\Reihe |a_k|$ konvergiert. \smallskip \\
+	\Satz Eine absolut konvergente Reihe ist auch konvergent und es gilt:
+	\vspace{-2mm}
+	$$\left| \Reihe a_k \right| \leq \Reihe |a_k|$$
+\end{tcolorbox}
+
+
+\Title{Konvergenzkriterien}
+
+\begin{tcolorbox}
+	\Kor (Vergleichssatz)\\
+	Seien $\Reihe a_{k}$ und $\Reihe b_{k}$ Reihen mit $0 \leq a_{k} \leq b_{k}$ $\forall k \geq K \geq 1$ 
+	Dann gilt:
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\Reihe b_{k}$ konvergent $\Rightarrow$  $\Reihe a_{k}$ konvergent
+		\item $\Reihe a_{k}$ divergent $\Rightarrow$  $\Reihe b_{k}$ divergent
+	\end{enumerate}
+	Dies wird auch \textbf{Majoranten- / Minorantenkriterium} genannt.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\Satz (Leibnitz) \\
+	Sei $(a_{n})_{n\geq 1}$ monoton fallend mit $a_{n} \geq 0,$ $\forall n \geq 1$ und $\Limit a_{n} = 0$. 
+	Dann konvergiert
+	\vspace{-1mm}
+	\begin{center}
+		S:= $\sum_{k=1}^{\infty}(-1)^{k+1} a_{k}$ 
+		und es gilt: \textbf{$a_{1} - a_{2} \leq S \leq a_{1}$}.
+	\end{center}
+	\vspace{-1mm}
+	Restgliedabschätzung: $|\sum_{k= n+1}^{\infty} (-1)^{k+1} a_k| \leq a_{n+1}$
+\end{tcolorbox}
+
+\color{blue}
+\Satz (Dirichlet) Falls eine Reihe absolut konvergiert, dann konvergiert auch jede Umordnung
+der Reihe mit dem selben Grenzwert. Eine Umordnung ist eine bijektive Abbildung $\phi : \N^{*} \to \N^{*}$.
+
+\Satz (Riemann) Fall die Reihe nur konvergiert, so gibt es immer eine Annordnung, so 
+dass $\Reihe a_{\phi(k)} = x, \forall x \in \R$.
+\color{black}
+
+\begin{tcolorbox}
+	\textbf{Quotientenkriterium}: Falls $(a_n)_{n \geq 1}, a_n \neq 0$ und $\limsup_{n \to \infty}$ $\left|a_{n+1} / {a_n}\right|<1$, 
+	dann konvergiert die Reihe abs. falls $\liminf_{n \to \infty}$ $\left|a_{n+1} / {a_n}\right|>1$ so divergiert sie.
+	Äquivalent: Falls $\Limit\left|a_{n+1} / {a_n}\right|<1$, so ist die Reihe absolut konvergent (für \(>1\) divergent). \\
+
+	\textbf{Wurzelkriterium}: Falls $\limsup_{n \to \infty} \sqrt[n]{|a_n|}<1$ konvergiert die Reihe absolut,
+	falls $>1$ (auch $\limsup$) so divergiert sie.
+	Äquivalent: Falls $\lim_{n\rightarrow\infty}\sqrt[n]{|a_n|}<1$, so ist die Reihe absolut konvergent (und für $>1$ divergent).
+\end{tcolorbox}
+
+
+\Bsp Sei \(0\neq z\in\C\) und \(a_n=\frac{z^{n}}{(n)!},\;n\in\N\).\\
+\(\qquad \left|\frac{a_{n+1}}{a_n}\right|=\frac{|z|^{(n+1)}}{(n+1)!} {\Bigg/} \frac{|z|^{n}}{(n)!} = \frac{|z|}n \leq \frac 12<1 \) für \(n>2|z|\).\\
+\(\qquad\implies\sum_{n=0}^\infty \frac{z^{n}}{(n)!}\) ist konvergent.
+
+
+\Title{Potenzreihen}
+
+Eine Potenzreihe ist eine Reihe von der Form $\sum_{k = 0}^{\infty} c_k \cdot z^k$, wobei $(c_k)_{k \geq 0}$
+eine Folge ist. 
+
+\begin{tcolorbox}
+	\Def Der Konvergenzradius $\rho$ einer Potenzreihe entspricht:\\
+	$\rho = 
+	\begin{cases}
+		+\infty & \text{falls } \limsup_{k\rightarrow\infty}\sqrt[k]{|c_k|}=0 \\
+		\frac{1}{\limsup_{k\rightarrow\infty}\sqrt[k]{|c_k|}} & \text{falls }\limsup_{k\rightarrow\infty}\sqrt[k]{|c_k|}>0
+	\end{cases}$
+
+	(Äquivalent mit dem Quotientenkriterium)
+\end{tcolorbox}
+
+\Kor Die Potenzreihe $\sum_{k=0}^{\infty} c_{k}z^{k}$ konvergiert absolut für alle $|z| < \rho$ und 
+divergiert für alle $|z| > \rho$. Der Fall $|z| = \rho$ muss jeweils noch separat geprüft werden.
+
+\Satz Ein Potenzreihe $f(x) = \Reihe c_k x^k$ mit positivem Konvergenzradius $\rho$, konvergiert gleichmässig 
+auf $[-\rho , \rho]$, insbesondere ist $f : ]-\rho, \rho [ \to \R$ stetig.
+
+\Bem Absolut konvergente Potenzreihen sind stetig.
+
+\Title{Doppelreihen}
+
+Gegeben eine Doppelfolge $(a_{ij})_{i,j \geq 0}$, so können $\sum_{i = 0}^{\infty} \sum_{j = 0}^{\infty} a_{ij} = S_0 + S_1 + ...$
+und $\sum_{j = 0}^{\infty} \sum_{i = 0}^{\infty} a_{ij} = b_0 + b_1 + ...$ beide konvergent sein mit
+verschiedenen Grenzwerten. Wir nennen $\sum_{i,j \geq 0} a_{ij}$ eine Doppelreihe. Wenn die Reihe absolut
+konvergiert, so sind beide Grenzwerte gleich und jede Anordnung konvergiert zum selben Grenzwert.
+
+
+\vspace*{0mm}
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Das Cauchy Produkt}
+
+\begin{tcolorbox}
+	\Def Das Cauchy Produkt zweier Reihen $\sum_{i = 0}^{\infty} a_i$ und $\sum_{j = 0}^{\infty} b_j$ ist
+	die Reihe: $$\sum_{n = 0}^{\infty} \sum_{j = 0}^{n} (a_{n-j} \cdot b_j) = a_0b_0 + (a_0b_1 + a_1b_0) + ...$$ 
+	Falls beide Reihen konvergieren, so konvergiert auch das Cauchy Produkt.
+\end{tcolorbox}
+	
+
+Nun wollen wir noch betrachten ob man Summation und Limes vertauschen kann.
+
+\Satz Sei $f_{n}: \N \rightarrow \R$ eine Folge mit:
+\begin{enumerate}
+	\item {$f(j) := \lim_{n \to \infty} f_{n}(j)$ existiert $\forall j \in \N$}
+	\item{Es gibt eine Funktion g: $\N \to [0,\infty[$, mit \\
+		$|f_{n}(j)| \leq g(j), \; \forall j \geq 0, \forall n \geq 0$ und 
+		$\sum_{j=0}^{\infty} g(j)$ konvergiert. 
+	}
+\end{enumerate}
+Dann gilt $\sum_{j=0}^{\infty} f(j) = \lim_{n \to \infty} \sum_{j=0}^{\infty} f_{n}(j)$.
+
+
+\Title{Integral Test}
+
+\begin{tcolorbox}
+	Sei $f(x)$ eine stetige, positive und monoton fallende Funktion auf $[k, \infty[$ und $f(n) = a_n$:
+	$$\int_k^\infty f(x)dx \text{ konvergiert } \Leftrightarrow \Sum_{n = k}^{\infty} a_n \text{ konvergiert }$$
+	$$\int_k^\infty f(x)dx \text{ divergiert } \Leftrightarrow \Sum_{n = k}^{\infty} a_n \text{ divergiert }$$
+\end{tcolorbox}
+
+
+\Title{Strategie - Konvergenz von Reihen}
+
+\begin{enumerate}[label=(\arabic*)]
+	\item Handelt es sich um eine spezielle Reihe? (Geometrisch, Teleskopiert, Harmonisch, Zetafunktion)
+	\item Ist $\Limit a_n = 0$? (Nullfolgenkriterium)
+	\item Ist das Quotientenkriterium oder Wurzelkriterium anwendbar?
+	\item Existiert ein konvergierender Majorant / divergirender Minorant?
+	\item Kann man das Leibnitzkriterium anwenden?
+	\item Integral Test?
+\end{enumerate}

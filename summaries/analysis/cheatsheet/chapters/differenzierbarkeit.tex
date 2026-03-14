@@ -1,0 +1,219 @@
+\section{Differentialrechnung}
+
+
+\Title{Differenzierbarkeit}
+
+\begin{tcolorbox}
+    Sei $x_0 \in D$ ein Häufungspunkt, so $f$ ist in $x_0$ \textbf{differenzierbar}, falls der Grenzwert
+    $$\Lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \Lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}$$
+    existiert. Der Grenzwert wird dann mit $f'(x_0)$ oder $\frac{df}{dx}(x_0)$ bezeichnet.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+	\Satz (Weierstrass) Sei $f: D \rightarrow R$, $x_{0} \in D$ Häufungspunkt von $D$. Dann ist folgende
+    Aussage äquivalent zur differenzierbarkeit:
+
+	$\exists c \in \R$ und $r: D \rightarrow \R$ mit
+	\begin{itemize}
+		\item{$f(x) = f(x_0) + c(x-x_0) + r(x)(x-x_0)$}
+		\item{$r(x_0)=0$ und r ist stetig in $x_0$}
+    \end{itemize}
+	Falls dies zutrifft ist $c=f^{'}(x_0)$ eindeutig bestimmt. \bigskip
+
+	\Satz Eine Funktion $f: D \rightarrow \R$ ist genau dann in $x_0$ differenzierbar falls $\exists$ 
+    Funktion $\phi(x) := f'(x_0) + r(x)$, so dass $f(x) = f(x_0) + \phi(x)(x-x_0), \; \forall x \in D$. 
+    In diesem Fall gilt $\phi(x_0) = f^{'}(x_0)$. Wenn man die Gleichung umformt erhält man $\phi(x)
+    = \frac{f(x) - f(x_0)}{x - x_0}$.
+\end{tcolorbox}
+
+\Kor $f$ differenzierbar in $x_0 \implies$ $f$ stetig in $x_0$ 
+
+\Bem Die Tangentengleichung von $f$ im Punkt $(x_0, f(x_0))$ ist $y = f(x_0) + f'(x_0)(x - x_0)$.
+
+\begin{tcolorbox}
+    $f : D \to R$ ist in \textbf{$\mathbf{D}$ differenzierbar}, falls für jeden Häufungspunkt $x_0 \in D$,
+    $f$ in $x_0$ differenzierbar ist.
+\end{tcolorbox}
+
+\Kor Sei $f: D \to E$ eine bijektive Funktion und $x_0 \in D$ ein Häufungspunkt. Wir nehmen an $f$ ist
+in $x_0$ differenzierbar und $f'(x_0) \neq 0$, zudem nehmen wir an $f^{-1}$ ist in $y_0 = f(x_0)$
+stetig. Dann ist $y_0$ ein Häufungspunkt von $E$ und $f^{-1}$ ist in $y_0$ differenzierbar.
+$$(f^{-1})'(y_0) = \frac{1}{f'(f^{-1}(y_0))}$$
+
+\Title{Rechnen mit Ableitungen}
+
+\begin{enumerate}[label = (\arabic*)]
+    \item $(f + g)'(x_0) = f'(x_0) + g'(x_0)$
+    \item $(f \cdot g)'(x_0) = f'(x_0) \cdot g(x_0) + g'(x_0) \cdot f(x_0)$
+    \item $(\frac{f}{g})'(x_0) = \frac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g(x_0)^2}$ für $g(x_0) \neq 0$
+    \item $(g \circ f)'(x_0) = g'(f(x_0)) \cdot f'(x_0)$
+    \item $(f^{-1})'(y_0) = \frac{1}{f'(x_0)}$, wobei $y_0 = f(x_0)$ und $f'(x_0) \neq 0$
+    \item $(a^{f(x)})' = ln(a)\cdot a^{f(x)} \cdot f`(x)$
+    \item $(f(x)^{g(x)})' = f(x)^{g(x)} \cdot [ln(f(x))\cdot g(x)]'$
+\end{enumerate}
+
+\Bem Für gerade $k$ gilt $\cosh(x)^{(k)} = \cosh(x)$ und für ungerade $k$ gilt $\cosh(x)^{(k)} = \sinh(x)$,
+analoges gilt für $\sinh$.
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Aussagen der Ableitung}
+
+Wir nehmen an $f$ ist in $D$ differenzierbar, so können wir folgende Aussagen machen:
+\begin{enumerate}[label = (\arabic*)]
+    \item $f$ besitzt ein lokales Maximum in $x_0$, wenn $f'(x_0) = 0$ und $f''(x_0) < 0$ oder falls es $\delta > 0$ gibt mit:
+    $$f(x) \leq f(x_0) \; \; \forall x \in ]x_0 - \delta, x_0 + \delta[ \cap D$$
+    \item $f$ besitzt ein lokales Minimum in $x_0$, wenn $f'(x_0) = 0$ und $f''(x_0) > 0$ oder falls es $\delta > 0$ gibt mit:
+    $$f(x) \geq f(x_0) \; \; \forall x \in ]x_0 - \delta, x_0 + \delta[ \cap D$$
+    \item $f$ besitzt ein lokales Extremum in $x_0$ falls es entweder ein lokales Maximum oder Minimum
+    von $f$ ist. Dies ist der Fall wenn $f'(x_0) = 0$ und $f''(x_0) \neq 0$.
+    \item $f$ besitzt einen Wendepunkt wenn $f''(x_0) = 0$.
+    \item $f$ besitzt einen Sattelpunkt wenn $f'(x_0) = 0$ und $f''(x_0) = 0$.
+\end{enumerate}
+
+Weiter gelten auch folgende Aussagen für $f,g : [a,b] \to \R$, wobei $f,g$ stetig und in $]a,b[$
+differenzierbar sind.
+\begin{enumerate}[label = (\arabic*)]
+    \item Falls $f'(\epsilon) = 0 \; \; \forall \epsilon \in ]a,b[$ ist $f$ konstant
+    \item Falls $f'(\epsilon) = g'(\epsilon) \; \; \forall \epsilon \in ]a,b[$ ist $f = g + c$
+    \item Falls $f'(\epsilon) \leq [<] 0 \; \; \forall \epsilon \in ]a,b[$ ist $f$ [streng] monoton fallend
+    \item Falls $f'(\epsilon) \geq [>] 0 \; \; \forall \epsilon \in ]a,b[$ ist $f$ [streng] monoton wachsend
+\end{enumerate}
+
+
+\Title{Satz von Rolle}
+
+\Satz Sei $f : [a,b] \to \R$ stetig und in $]a,b[$ differenzierbar. Wenn nun $f(a) = f(b)$ gilt, so 
+gibt es ein $\epsilon \in ]a,b[$ mit $f'(\epsilon) = 0$.
+
+
+\Title{Mittelwertsatz}
+
+\Satz Sei $f : [a,b] \to \R$ stetig und in $]a,b[$ differenzierbar. Dann gibt es $\epsilon \in ]a,b[$ 
+mit $f(b) - f(a) = f'(\epsilon)(b - a)$.
+
+
+\Title{Satz von L'Hospital}
+
+Sei $f : [a,b] \to \R$ stetig und in $]a,b[$ differenzierbar. Dann gibt es $\epsilon \in ]a,b[$ mit
+$g'(\epsilon)(f(b)-f(a)) = f'(\epsilon)(g(b)-g(a))$. Falls nun $g'(x) \neq 0$ für alle $x$ ist, dann
+folgt $g(a) \neq g(b)$ und 
+$$\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\epsilon)}{g'(\epsilon)}.$$
+
+\Satz Falls nun 
+$$\Lim_{x \to b^-} f(x) = 0, \Lim_{x \to b^-} g(x) = 0 \; \text{ und } \; \Lim_{x \to b^-} \frac{f'(x)}{g'(x)} = \lambda$$
+existiert, folgt 
+$$\Lim_{x \to b^-} \frac{f(x)}{g(x)} = \Lim_{x \to b^-} \frac{f'(x)}{g'(x)} = \lambda $$ 
+
+L'Hospital gilt auch wenn: $b = +\infty$, $x \to a^+$, $\lambda = +\infty$ oder 
+$\lim f = \lim g = \infty$.
+
+Weiter gilt die Regel von L'Hospital auch für Fälle der Form ``$\frac{\infty}{\infty}$'', indem man
+sie wiefolgt umschreibt: $\frac{f(x)}{g(x)}=\frac 1{g(x)} / \frac 1{f(x)}$.
+Für Fälle der Form ``$\infty-\infty$'' kann man die Funktionen auf den gleichen Nenner bringen.
+
+\Bsp $\lim_{x \to 0}\left(\frac1{\sin x}-\frac1x\right)=\lim_{x \to 0}\frac{x-\sin x}{x\sin x}$
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Konvexität}
+
+$f$ ist [streng] \textbf{konvex} (auf $I$) falls für alle $x \leq [<] y$, $x,y \in I$ und $\lambda \in [0,1]$
+$$f(\lambda x + (1-\lambda)y) \quad \leq [<] \quad \lambda f(x) + (1-\lambda)f(y)$$
+gilt.
+
+Wobei wir folgende Bemerkungen machen können:
+\begin{enumerate}[label = (\arabic*)]
+    \item Die Summe zweier konvexer Funktionen ist konvex
+    \item $f$ ist genau dann konvex, falls für $x_0 \leq x \leq x_1$ in $I$ gilt:
+    $$\frac{f(x) - f(x_0)}{x - x_0} \leq \frac{f(x_1) - f(x)}{x_1 - x}$$
+    \item Die Funktion $f$ ist genau dann [streng] konvex, falls $f'$ [streng] monoton wachsend ist.
+\end{enumerate}
+
+\Bem Alle Aussagen gelten auch für \textbf{Konkavität}, wir müssen nur das Ungleichzeichen umkehren.
+
+
+\Title{Höhere Ableitungen}
+
+Sei $f : D \to \R$ differenzierbar.
+\begin{enumerate}[label = (\arabic*)]
+    \item Für $n \geq 2$ ist $f$ \textbf{$n$-mal differenzierbar} in $D$, falls $f^{(n-1)}$ in $D$ 
+    differenzierbar ist. Wobei $n$-mal differenzierbar $\implies$ $(n-1)$-mal stetig differenzierbar.
+    \item Die Funktion $f$ ist in $D$ \textbf{glatt}, falls sie $\forall n \geq 1$, $n$-mal 
+    differenzierbar ist.
+\end{enumerate}
+
+\Bem Alle Polynome, sowie $e^x, \sin$ und $\cos$ sind glatte Funktionen.
+
+
+\Title{Rechnen mit Höhere Ableitungen}
+
+Seien $f,g : D \to \R$ $n$-mal differenzierbar:
+\begin{enumerate}[label = (\arabic*)]
+    \item $(f + g)^{(n)} = f^{(n)} + g^{(n)}$
+    \item $(f \cdot g)^{(n)} = \Sum_{k = 0}^{n} \binom{n}{k} f^{(k)} \cdot g^{(n-k)}$
+    \item $\frac{f}{g}$ ist $n$-mal differenzierbar falls $g(x) \neq 0, \forall x \in D$
+    \item $(g \circ f)$ ist $n$-mal differenzierbar
+\end{enumerate}
+
+
+\Title{Potenzreihe}
+
+\Satz Sei $f_n$ eine Funktionenfolge, wobei $f_n$ einmal stetig differenzierbar ist für alle 
+$n \geq 1$. Wir nehmen an, dass sowohl die Folge $(f_n)_{n \geq 1}$ wie $(f_n')_{n \geq 1}$ 
+gleichmässig konvergieren mit $\Limit f_n = f$ und $\Limit f_n' = p$. Dann ist $f$ stetig 
+differenzierbar und $f' = p$.
+
+\begin{tcolorbox}
+    \Satz Sei $\Reihe c_k x^k$ eine Potenzreihe mit Konvergenzradius $p > 0$. Dann ist 
+    $$f(x) = \Reihe c_k (x - x_0)^k$$
+    auf $]x_0 - p, x_0 + p[$ differenzierbar und
+    $$f'(x) = \Reihe k \cdot c_k (x - x_0)^{k-1}$$
+    für alle $x \in ]x_0 - p, x_0 + p[$.
+\end{tcolorbox}
+
+
+\columnbreak
+%----------------------------------------------------------------------------------------------------
+
+
+\Title{Taylox Approximation}
+
+Jede glatte Funktione kann als Potenzreihe angenähert werden, dafür brauchen wir ein sogenanntes
+\textbf{Taylor-Polynom} (oder Taylorreihen). Die trigonometrischen Funktionen sind genau solche 
+Taylorreihen.
+
+\begin{tcolorbox}
+    Sei $f : [a,b] \to \R$ stetig und in $]a,b[$ $(n+1)$-mal differenzierbar. Für jedes $a < x \leq b$
+    gibt es $\epsilon \in ]a,x[$ mit:
+    $$f(x) = \Sum_{k = 0}^{n} \frac{f^{(k)}(a)}{k!}(x - a)^k + \frac{f^{(n + 1)}(\epsilon)}{(n+1)!}(x-a)^{n+1}$$
+    Wobei wir hierbei das $n$-te Taylor-Polynom $T_n$ und eine Fehlerabschätzung $R_n$ erhalten.
+\end{tcolorbox}
+
+\Bem Der letzte Term $\frac{f^{(n + 1)}(\epsilon)}{(n+1)!}(x-a)^{n+1}$ wird meist zur Fehlerabschätzung
+innerhalb eines Bereiches von $a$ verwendet. Man nimmt daher den Wert von $\epsilon \in ]a,x[$, so
+dass der Fehlerterm am grössten ist.
+
+
+\Title{Spezielle Punkte}
+
+Sei $n \geq 0, a < x_0 < b$ und $f : [a,b] \to \R$ in $]a,b[$ $(n+1)$-mal stetig differenzierbar.
+Annahme: $f'(x_0) = f''(x_0) = ... = f^{(n)}(x_0) = 0$
+
+\begin{enumerate}[label = (\arabic*)]
+    \item Falls $n$ gerade ist und $x_0$ eine lokale Extremalstelle, folgt $f^{(n+1)}(x_0) = 0$
+    \item Falls $n$ ungerade ist und $f^{(n+1)}(x_0) > 0$, so ist $x_0$ eine strikte lokale Minimalstelle
+    \item Falls $n$ ungerade ist und $f^{(n+1)}(x_0) < 0$, so ist $x_0$ eine strikte lokale Maximalstelle
+\end{enumerate}
+
+Ist $x_0$ jedoch keine Extremalstelle bleiben zwei Optionen:
+\begin{enumerate}[label = (\arabic*)]
+    \item $f'(x_0) = 0 \wedge x_0$ keine Extremalstelle $\implies$ ist ein Sattelpunkt
+    \item $f''(x_0) = 0 \wedge x_0$ keine Extremalstelle $\implies$ ist ein Wendepunkt
+\end{enumerate}
