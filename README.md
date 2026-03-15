@@ -1,68 +1,29 @@
-# Summaries
+# ETHZ Summaries
 
 [![Build and Deploy to GitHub Pages](https://github.com/dcamenisch/ethz-summaries/actions/workflows/node.js.yml/badge.svg)](https://github.com/dcamenisch/ethz-summaries/actions/workflows/node.js.yml)
 
-My study summaries and cheat sheets from ETH Zurich, plus the website that displays them. Part of the [Polyring](https://polyring.ch) webring.
+Summaries and cheat sheets from my CS studies at ETH Zurich. Browse and download them on the website:
 
-The site is available at: https://dcamenisch.github.io/summaries/
+**https://dcamenisch.github.io/summaries/**
 
-## Repository Structure
+## Available Summaries
 
-```
-summaries/          # Source documents (LaTeX, Typst, or pre-compiled PDFs)
-homepage/           # 11ty website source
-  src/
-    _data/          # Global data (documents.json — document index)
-    _includes/      # Nunjucks templates
-    uploads/        # Pre-compiled PDFs committed to the repo
-  build-documents.sh  # Compiles summaries/ sources → src/uploads/
-```
+| Semester | Course |
+|----------|--------|
+| 1 | Algorithmen und Datenstrukturen, Diskrete Mathematik, Einführung in die Programmierung, Lineare Algebra |
+| 2 | Analysis I, Digital Design and Computer Architecture |
+| 3 | Algorithmen und Wahrscheinlichkeiten, Analysis II, Numerical Methods for CS, System Programming and Computer Architecture, Theoretische Informatik |
+| 4 | Computer Networks, Data Modeling and Databases, Formal Methods and Functional Programming, Wahrscheinlichkeit und Statistik |
+| 5 | Compiler Design, Computer Systems, Visual Computing |
+| 6 | Introduction to Machine Learning, Rigorous Software Engineering |
+| Electives | ANOVA and Experimental Design, Entrepreneurial Risks, Introduction to Neuroinformatics |
 
-## Adding a Document
+## Contributing
 
-### Option A: Pre-compiled PDF
+Source files live in [`summaries/`](summaries/) — LaTeX, Typst, and pre-compiled PDFs. The website is built with [11ty](https://www.11ty.dev/) from [`homepage/`](homepage/). CI compiles the sources and deploys automatically on push to `main`.
 
-1. Drop the PDF into `homepage/src/uploads/`
-2. Add an entry to `homepage/src/_data/documents.json`
-3. Push — it appears on the site
+To add or update a document, see the [`summaries/` README](summaries/README.md).
 
-### Option B: LaTeX or Typst source
+---
 
-1. Create a folder in `summaries/` with a `main.tex` or `main.typ` file
-2. Add an entry to `homepage/src/_data/documents.json` referencing the output filename
-3. Push — CI compiles it and deploys automatically
-
-Output PDFs are named after their folder path with `/` replaced by `-`
-(e.g. `summaries/analysis/cheatsheet/` → `analysis-cheatsheet.pdf`)
-
-## documents.json format
-
-```json
-[
-  {
-    "course": "Course Name",
-    "semester": 3,
-    "type": "summary",
-    "file": "CourseName.pdf"
-  },
-  {
-    "course": "Another Course",
-    "semester": 4,
-    "type": "both",
-    "summaryFile": "Course-Summary.pdf",
-    "cheatsheetFile": "Course-Cheatsheet.pdf"
-  }
-]
-```
-
-Fields:
-- `semester` — integer 1–6, or `0` for GESS/Ergänzung
-- `type` — `"summary"`, `"cheatsheet"`, or `"both"`
-- `file` — filename in `src/uploads/` (used when `type` is not `"both"`)
-- `summaryFile` / `cheatsheetFile` — used when `type` is `"both"`
-- `extraLink` (optional) — `{ "url": "...", "label": "..." }` for an additional link
-
-## GitHub Pages Setup
-
-1. Go to Settings → Pages → Source → select **GitHub Actions**
-2. Push to `main` — the workflow builds and deploys automatically
+Part of the [Polyring](https://polyring.ch) webring.

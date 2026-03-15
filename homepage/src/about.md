@@ -7,7 +7,7 @@ layout: about.njk
 
 ## Danny Camenisch
 
-Hi there, stranger! I'm welcoming you to my little site. Here I'm sharing my summaries from my CS studies @ ETH and if I'm feeling lucky, I might also write a blog post once in a while. 
+Hi there, stranger! I'm welcoming you to my little site. Here I'm sharing my summaries from my CS studies @ ETHZ and if I'm feeling lucky, I might also write a blog post once in a while. 
 
 You can also find me on:
 
